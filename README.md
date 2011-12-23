@@ -1,4 +1,4 @@
-![StuffDB](https://raw.github.com/lrvick/stuffdb/master/static/img/StuffDB.png)
+![StuffDB](https://raw.github.com/lrvick/stuffdb/master/static/img/stuffdbbanner.png)
 
 # StuffDB #
 

@@ -1,3 +1,5 @@
+![StuffDB](https://raw.github.com/lrvick/stuffdb/master/static/img/StuffDB.png)
+
 # StuffDB #
 
 <http://github.com/lrvick/stuffdb>

@@ -7,33 +7,32 @@ from utils.pyqrnative.PyQRNative import QRCode,QRErrorCorrectLevel
 from urllib import urlencode
 from urllib2 import urlopen
 
-class Tag:
+class Attachment(models.Model):
+    name = models.CharField(max_length=255)
+    date_created = models.DateTimeField(auto_now_add=True)
+    path = models.FileField(upload_to='%s/attachments' % settings.MEDIA_ROOT)
+    def __unicode__(self):
+        return self.name
+
+class Tag(models.Model):
     name = models.CharField('Name', max_length=250)
     icon = models.ImageField(upload_to='%s/icons' % settings.MEDIA_ROOT)
     def __unicode__(self):
         return self.name
 
-class Domain(models.Model):
-    name = models.CharField(max_length=150, unique=True)
-    slug = models.SlugField(unique=True)
-    tags = models.ManyToManyField(Tag,related_name="tags",null=True,blank=True)
-    def __unicode__(self):
-        return self.name
-
 class Thing(models.Model):
     name = models.CharField('Name', max_length=250)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField()
     short_url = models.URLField()
-    domain = models.ForeignKey(Domain, related_name="things", blank=False, default=0)
     description = models.TextField('Description',blank=True,null=True)
     notes = models.TextField('Notes',blank=True,null=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
     tags = models.ManyToManyField(Tag,related_name="tags",null=True,blank=True)
+    attachments = models.ManyToManyField(Attachment,related_name="attachments",null=True,blank=True)
     barcode = models.ImageField(upload_to='%s/barcodes' % settings.MEDIA_ROOT)
     class Meta:
         ordering = ['date_modified', 'name']
-        unique_together = ('domain', 'name')
     def __unicode__(self):
         return self.name
     def save(self):
@@ -57,10 +56,11 @@ class Thing(models.Model):
 
         super(Thing,self).save()
 
-class Attachment(models.Model):
-    name = models.CharField(max_length=255)
-    date_created = models.DateTimeField(auto_now_add=True)
-    path = models.FileField(upload_to='%s/attachments' % settings.MEDIA_ROOT)
-    thing = models.ForeignKey(Thing)
+class Domain(models.Model):
+    name = models.CharField(max_length=150, unique=True)
+    slug = models.SlugField(unique=True)
+    things = models.ManyToManyField(Thing,related_name="things",null=True,blank=True)
     def __unicode__(self):
         return self.name
+
+

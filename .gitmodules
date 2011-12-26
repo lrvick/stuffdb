@@ -1,3 +1,6 @@
 [submodule "static/fonts/chunk"]
 	path = static/fonts/chunk
 	url = https://github.com/theleagueof/chunk.git
+[submodule "utils/pyqrnative"]
+	path = utils/pyqrnative
+	url = https://github.com/unapiedra/pyqrnative.git

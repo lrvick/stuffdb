@@ -3,3 +3,4 @@
 .*
 *.wsgi
 *.pyc
+settings.py

@@ -37,6 +37,7 @@ to object pages is made available by printable QR code labels.
 
     ```bash
     cd stuffdb
+    cp settings.py.sample settings.py
     vim settings.py
     ```
 

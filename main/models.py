@@ -36,7 +36,7 @@ class Thing(models.Model):
     date_modified = models.DateTimeField(auto_now=True)
     tags = models.ManyToManyField(Tag,related_name="tags",null=True,blank=True)
     attachments = models.ManyToManyField(Attachment,related_name="attachments",null=True,blank=True)
-    barcode = models.ImageField(upload_to='%s/barcodes' % settings.MEDIA_ROOT)
+    barcode = models.ImageField(upload_to='barcodes')
     class Meta:
         ordering = ['date_modified', 'name']
     def __unicode__(self):

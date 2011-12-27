@@ -3,6 +3,7 @@
 {% block content %}
 <p>{{ thing.name }}<p>
 <p>{{ thing.description }}<p>
-<p>{{ thing.notes }}<p>
+<p>{{ thing.notes }}</p>
+<img width="100px" height="100px" src="{{ thing.barcode.url }}" />
 <a href="/thing/{{thing.slug}}/edit">Edit</a>
 {% endblock %}

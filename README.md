@@ -41,16 +41,16 @@ to object pages is made available by printable QR code labels.
     vim settings.py
     ```
 
-4. Create admin user and initialize database
+3. Initialize database and static files
 
     ```bash
-    python manage.py syndb
+    ./manage.py syndb
+    ./manage.py collectstatic
     ```
-
-3.  Start StuffDB
+4.  Start StuffDB
 
     ```bash
-    python manage.py runserver 0.0.0.0:8080
+    ./manage.py runserver 0.0.0.0:8080
 
     ```
 

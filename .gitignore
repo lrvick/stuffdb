@@ -4,3 +4,5 @@
 *.wsgi
 *.pyc
 settings.py
+static/admin
+media/

@@ -64,6 +64,6 @@ class Thing(models.Model):
             temp_file = StringIO()
             im.save(temp_file, format='png')
             contents = ContentFile(temp_file.getvalue())
-            self.barcode.save('%s_%s.png' % (self.domain,self.slug), contents)
+            ##self.barcode.save('%s_%s.png' % (self.domain,self.slug), contents)
 
         super(Thing,self).save(*args,**kwargs)

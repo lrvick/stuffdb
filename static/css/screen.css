@@ -1,0 +1,107 @@
+body {
+  font-family: 'Armata', sans-serif;
+  background:#EEE;
+}
+
+header {
+  position:absolute;
+  background:#000;
+  color:#FFF;
+  top:0px;
+  left:0px;
+  right:0px;
+  height:50px;
+}
+
+header h1{
+  width:200px;
+}
+
+header h1,
+header h2 {
+  margin:0;
+  padding:0;
+  display:block;
+  float:left;
+  height:100%;
+  line-height:50px;
+  text-indent:33px;
+}
+
+aside {
+  position:absolute;
+  background:#666;
+  width:200px;
+  left:0px;
+  top:50px;
+  bottom:0px;
+}
+
+aside ul {
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+aside ul li a {
+  display:block;
+  width:100%;
+  border-bottom:1px black solid;
+  text-indent:10px;
+  line-height:30px;
+  display:block;
+  width:100%;
+  height:100%;
+  color:#FFF;
+  text-decoration:none;
+}
+
+#content {
+  padding:15px 30px;
+  display:block;
+  position:absolute;
+  top:50px;
+  left:200px;
+  right:0px;
+  bottom:0px;
+}
+
+#content textarea,
+#content input[type=text]{
+  resize:none;
+  border:1px black solid;
+  text-indent:15px;
+  padding:10px 0px;
+  width:100%;
+  border-radius:3px;
+  padding: 10px 0px;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border-radius:5px;
+  -moz-box-shadow:inset 0px 0px 7px 2px #b3afaf;
+  -webkit-box-shadow:inset 0px 0px 7px 2px #b3afaf;
+  box-shadow:inset 0px 0px 7px 2px #b3afaf;
+  opacity:0.7;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+  filter: alpha(opacity=90);
+  text-shadow: 0px -1px 0px #334f71;
+}
+#content textarea:hover,
+#content input[type=text]:hover{
+  opacity:1;
+}
+
+input::-webkit-input-placeholder {
+  text-transform: uppercase;
+  color: #000;
+  text-shadow: 0px -1px 0px #38506b;
+}
+
+textarea::-webkit-input-placeholder {
+  text-transform: uppercase;
+  color: #000;
+  text-shadow: 0px -1px 0px #38506b;
+}
+
+input:-moz-placeholder,
+textarea::-webkit-input-placeholder,
+textarea:-moz-placeholder {

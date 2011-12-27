@@ -6,6 +6,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$/', add_thing),
+    url(r'^$', add_thing),
     url(r'^thing/(?P<slug>\w+)$', view_thing),
 )

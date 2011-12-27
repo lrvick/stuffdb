@@ -1,10 +1,12 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.template.defaultfilters import slugify
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from django.conf import settings
+from django.core import serializers
 from main.models import Domain, Thing
 from main.forms import ThingForm
+import simplejson as json
 
 #yeah same issue
 #print out what obj is
@@ -75,6 +77,24 @@ def view_thing(request,lookup):
         },
         context_instance=RequestContext(request)
     )
+
+def serialize_thing(request,lookup,markup):
+    domain, is_created = Domain.objects.get_or_create(name=request.get_host())
+    if lookup.isdigit():
+        thing = Thing.objects.get(id=lookup,domain=domain)
+    else:
+        thing = Thing.objects.get(slug=lookup,domain=domain)
+    serialized_data = serializers.serialize(markup,[thing])
+    mimetype="application/%s" % markup
+    return HttpResponse(serialized_data,mimetype=mimetype)
+
+
+def serialize_things(request,markup):
+    domain, is_created = Domain.objects.get_or_create(name=request.get_host())
+    things = Thing.objects.filter(domain__name__iexact=domain)
+    serialized_data = serializers.serialize(markup,things)
+    mimetype="application/%s" % markup
+    return HttpResponse(serialized_data,mimetype=mimetype)
 
 def list_things(request):
     domain, is_created = Domain.objects.get_or_create(name=request.get_host())

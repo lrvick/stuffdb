@@ -57,13 +57,13 @@ class Thing(models.Model):
             req_url = '%s%s' % (bitly_url,urlencode(bitly_vals))
             short_url = urlopen(req_url).read()
 
-            qr = QRCode(8, QRErrorCorrectLevel.Q)
+            qr = QRCode(2, QRErrorCorrectLevel.M)
             qr.addData(short_url)
             qr.make()
             im = qr.makeImage()
             temp_file = StringIO()
             im.save(temp_file, format='png')
             contents = ContentFile(temp_file.getvalue())
-            ##self.barcode.save('%s_%s.png' % (self.domain,self.slug), contents)
+            self.barcode.save('%s_%s.png' % (self.domain,self.slug), content=contents,save=False)
 
         super(Thing,self).save(*args,**kwargs)

@@ -9,11 +9,10 @@ PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-SITE_URL = 'http://yoursite.com'
+SITE_NAME = 'StuffDB'
 
-BITLY_USERNAME = 'user';
-BITLY_PASSWORD = 'pass';
-
+BITLY_USERNAME = 'user_here';
+BITLY_PASSWORD = 'api_key_here';
 
 ADMINS = (
     ('Your Name', 'your_email@example.com'),
@@ -24,7 +23,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '.stuffdb.db',
+        'NAME': os.path.join(PROJECT_PATH,'.stuffdb.db'),
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -45,6 +44,14 @@ MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
 MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
+
+print STATIC_ROOT
+
+STATICFILES_DIRS = (
+        ("css", os.path.join(PROJECT_PATH, 'static/css')),
+        ("js", os.path.join(PROJECT_PATH, 'static/js')),
+        ("img", os.path.join(PROJECT_PATH, 'static/img')),
+)
 
 STATIC_URL = '/static/'
 

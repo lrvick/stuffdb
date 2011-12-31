@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from main.views import add_thing, view_thing, edit_thing, list_things, serialize_thing, serialize_things
 
 admin.autodiscover()
@@ -16,3 +17,5 @@ urlpatterns = patterns('',
     url(r'^thing/(?P<lookup>[-\w]+)/edit$', edit_thing),
     url(r'^thing/(?P<lookup>[-\w]+)/serialize/(?P<markup>[-\w]+)$', serialize_thing),
 )
+
+urlpatterns += staticfiles_urlpatterns()
